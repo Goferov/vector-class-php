@@ -9,7 +9,7 @@ class Vector3D {
     }
 
     public function abs(): float {
-        return 1;
+        return sqrt($this->x**2 + $this->y**2 + $this->z**2);
     }
 
     public function dot(Vector $v): float {
@@ -17,8 +17,14 @@ class Vector3D {
         return $this->x * $coords['x'] + $this->y * $coords['y'] + $this->z * $coords['z'];
     }
 
-    public function vec(Vector $v): Vector {
-        return $v;
+    public function vec(IVector $v): IVector {
+        $b = $v->getCoords();
+
+        $c1 = $this->y*$b['z'] - $this->z*$b['y'];
+        $c2 = $this->z*$b['x'] - $this->x*$b['z'];
+        $c3 = $this->x*$b['y'] - $this->y*$b['x'];
+
+        return new Vector3D([$c1, $c2, $c3]);
     }
 
     public function getCoords(): array {

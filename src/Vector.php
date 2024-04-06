@@ -11,7 +11,7 @@ class Vector implements IVector {
     }
 
     public function abs(): float {
-        return 1;
+        return sqrt($this->x**2 + $this->y**2);
     }
 
     public function dot(Vector $v): float {
