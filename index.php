@@ -1,35 +1,6 @@
 <?php
-require_once "IVector.php";
-class Vector implements IVector {
-    private float $x;
-    private float $y;
+require_once 'src/Vector.php';
 
-    public function __construct(float $x, float $y)
-    {
-        $this->x = $x;
-        $this->y = $y;
-    }
-
-    public function abs(): float {
-        return 1;
-    }
-
-    public function dot(Vector $v): float {
-        $coords = $v->getCoords();
-        return $this->x * $coords['x'] + $this->y * $coords['y'];
-    }
-
-    public function vec(Vector $v): Vector {
-        return $v;
-    }
-
-    public function getCoords(): array {
-        return [
-            'x' => $this->x,
-            'y' => $this->y,
-        ];
-    }
-}
-
-
-$vector = new Vector(5,4);
+$v1 = new Vector(5,4);
+$v2 = new Vector(1,2);
+var_dump($v1->dot($v2));
